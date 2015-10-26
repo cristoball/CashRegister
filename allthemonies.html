@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset=UTF-8>
+		<title>All The Monies</title>
+		<link rel="stylesheet" type="text/css" href="first.css">
+		<script src="autorecon.js"></script>
+		<script src="manualreg.js"></script>
+		<script src="checkreg.js"></script>
+		<script src="dispregister.js"></script>
+		<script src="newman.js"></script>
+		<script src="headertext.js"></script>
+		<script src="serialize.js"></script>
+		<script src="account.js"></script>
+		<style>
+		</style>
+		
+		<script>
+			if(document.readyState == "complete") {
+				dispHeader();
+			} 
+			
+		</script>
+	</head>
+	
+	<body onload="displayRegister()">
+	<div id="wrapper">
+		<div id="header">
+				<div id="header" class="headertext">
+		All the Money
+		<div id="acctbal" class="headertext">
+			Account Balance: 
+			<div id="acctbalbox"></div>
+		</div>
+		<div id="acctavail" class="headertext">
+			Available Balance:
+			<div id="acctavailbox"></div> 
+		</div>
+		</div>
+		</div>
+		<div id="leftcolumnwrap">
+			<div id="leftcolumn">
+		<div id="acctsummary"></div>
+		<div id="sidemenu">
+			<div id="menu1" onclick="displayRegister()" class="button">1. Display Register</div>
+			<div id="menu2" onclick="enterNewMan()" class="button">2. Enter NEW manual transaction</div>
+			<div id="menu3" onclick="autoRecon()" class="button">3. Confirm Auto-Reconcillation</div>
+			<div id="menu4" onclick="displaymantrans(ManuallyReconTrans('4'))" class="button">4. Reconcile Manual Transaction to Bank Transaction</div>
+			<div id="menu5" onclick="displaymantrans(ManuallyReconTrans('5'))" class="button">5. Reconcile Bank Transaction to Manual Transaction</div>
+		</div>
+		</div>
+		</div>
+		
+		<div id="contentwrap">
+		<div id="maindiv">
+			<div id="dispregister" style="display: none">
+				<div id="RpendingDiv">
+					Pending Transactions
+					<table id="RpendingTbl">
+						<tbody id="RpendingTBody">
+							<tr id="RpendHead"><th>AutoRecon Pending</th><th>Manual/Bank</th><th>Pruchase Date</th><th>Payee</th><th>Type</th><th>Amount</th></tr>
+						</tbody>
+					</table>
+				</div>
+				<hr id=seperator>
+				<div id="RcompletedDiv">
+					Completed and Reconcilled Transactions
+					<table id="RcompletedTbl">
+						<tbody id="RcompletedTBody">
+							<tr id="RcompletedHead>"><th>Pruchase Date</th><th>Payee</th><th>Type</th><th>Amount</th><th>Date Reconciled</th><th>Balance As Of</th></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div id="newmantran" style="display: none">
+				<div id="Nmantran">
+					Enter new manual transaction
+					<table id="NmantranTbl">
+						<tbody id="NmantranTBody">
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div id="confirmauto" style="display: none">
+				<div id="Cleft">
+				<div id="CinstA" class="everything" display="none">
+					Manual Transaction
+					<table id="ClistA">
+						<tbody id="CbodyA">
+							<tr id="Crowhead"><th>Pruchase Date</th><th>Payee</th><th>Type</th><th>Amount</th></tr>
+						</tbody>
+					</table>
+				</div>
+				</div>
+				
+				<div id="Cright">
+				<div id="CinstB" class="everything" display="none">
+					Bank Transaction
+					<table id="ClistB">
+						<tbody id="CbodyB">
+							<tr id="Crowhead"><th>Pruchase Date</th><th>Payee</th><th>Type</th><th>Amount</th></tr>
+						</tbody>
+					</table>
+				</div>
+				</div>		
+			</div>
+								
+			<div id="manualrecon" style="display: none">
+				<div id="left">
+				<div id="instA" class="everything" display="none">
+					<table id="listA">
+						<tbody id="bodyA">
+							<tr id="rowhead"><th>Selector</th><th>Pruchase Date</th><th>Payee</th><th>Type</th><th>Amount</th></tr>
+						</tbody>
+					</table>
+				</div>
+				</div>
+				
+				<div id="right">
+				<div id="instB" class="everything" display="none">
+					<table id="listB">
+						<tbody id="bodyB">
+							<tr id="rowhead"><th>Selector</th><th>Pruchase Date</th><th>Payee</th><th>Type</th><th>Amount</th></tr>
+						</tbody>
+					</table>
+				</div>
+				</div>
+				</div>
+				
+				
+			</div>
+		</div>
+		
+		
+		
+	
+		<template id="instancetemplate">
+			<div id="everything" class="everything">
+				<div id="banktrantemplate">
+					Bank Transaction<br>
+					Date: <div class="BDateField"></div><br>
+					Payee: <div class="BPayeeField"></div><br>
+					Type: <div class="BTypeField"></div><br>
+					Amount: <div class="BAmountField"></div>
+				</div>
+				<div class="ConfirmBtn"></div>
+				<div class="DenyBtn"></div>
+				<div class="mantrantemplate">
+					Manual Transaction<br>
+					Date: <div class="MDateField"></div><br>
+					Payee: <div class="MPayeeField"></div><br>
+					Type: <div class="MTypeField"></div><br>
+					Amount: <div class="MAmountField"></div>
+				</div>
+			</div>
+		</template>
+			
+			
+</div>
+	</body>
+	
+	
+	
+</html>
