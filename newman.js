@@ -5,10 +5,18 @@ function enterNewMan() {
 	document.getElementById("manualrecon").style.display = "none";
 	
 	var NmantranTbl = document.getElementById("NmantranTbl");
+	if(document.getElementById("Nsubmitbtn")) {
+	var x = document.getElementById("Nsubmitbtn");
+		NmantranTbl.removeChild(x);
+		for(var i = 3; i >= 0; i--) {
+			NmantranTbl.deleteRow(i);
+		}
+	} 
 	var datePlbl = NmantranTbl.insertRow(0);
 	var payeelbl = NmantranTbl.insertRow(1);
 	var amtlbl = NmantranTbl.insertRow(2);
 	var typelbl = NmantranTbl.insertRow(3);
+	
 	
 	var datePbox = document.createElement("input");
 	datePbox.setAttribute("id", "datePbox");
