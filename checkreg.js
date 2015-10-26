@@ -63,7 +63,7 @@ function Banktran(pd, p, pA, tT, account) {
 	this.purchaseAmt = pA;
 	this.transType = tT;
 
-	account.addNewManTrans(this);
+	account.addNewBankTrans(this);
 	this.balanceAsOf = account.currentBalance;
 	autorecon(this);
 }
