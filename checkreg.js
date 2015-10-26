@@ -1,7 +1,7 @@
 
 var mantrans = [];		//	keeps all open (i.e., non-reconcilled) manual transactions
 var banktrans = [];		//	keeps all bank transactions (reconcilled & non-reconcilled)
-var account = {};		//	keeps balance and avaialable balance
+//var account = {};		//	keeps balance and avaialable balance
 var reconrecords = [];	//	
 
 function Transaction() {
@@ -89,6 +89,7 @@ Account.prototype.newAccount = function (balance) {			//	Constructor
 	this.accountID = Account.counter++;
 	this.currentBalance = balance;
 	this.availableBalance = balance;
+	setCookie("account", account);
 };
 
 Account.prototype.addNewBankTrans = function (banktran) {	//	subscribe to banktrans.push
@@ -102,6 +103,7 @@ console.log("IN account.addNewBankTrans: " + banktrans)
 		this.availableBalance -= purch;
 	}
 	banktrans.push(banktran);
+	setCookie("account", account);
 };
 
 Account.prototype.addNewManTrans = function (mantran) {
@@ -113,6 +115,7 @@ console.log("IN account.addNewManTrans: " + mantrans);
 		this.availableBalance -= purch;
 	}
 	mantrans.push(mantran);
+	setCookie("account", account);
 };
 
 function autorecon(bankTran) {						//	run when a new bankTran comes in
@@ -283,27 +286,27 @@ function runAutoRecon() {
 	autoRecon();
 }
 
-var ouraccount = new Account();
-ouraccount.newAccount("1000.00");
+var account = new Account();
+account.newAccount("1000.00");
 
-var tran1 = new Manualtran("Oct 20, 2015", "got some Pizza", "20.00", "check", ouraccount);
+var tran1 = new Manualtran("Oct 20, 2015", "got some Pizza", "20.00", "check", account);
 console.log("Transaction.counter = " + Transaction.counter);
-var bank1 = new Banktran("Oct 20, 2015", "Pizza Hut", "20.00", "check", ouraccount);
+var bank1 = new Banktran("Oct 20, 2015", "Pizza Hut", "20.00", "check", account);
 console.log("Transaction.counter = " + Transaction.counter);
-var tran2 = new Manualtran("Oct 21, 2015", "cigarettes", "7.00", "check", ouraccount);
+var tran2 = new Manualtran("Oct 21, 2015", "cigarettes", "7.00", "check", account);
 console.log("Transaction.counter = " + Transaction.counter);
-var bank2 = new Banktran("Oct 22, 2015", "cigarettes", "7.00", "check", ouraccount);
+var bank2 = new Banktran("Oct 22, 2015", "cigarettes", "7.00", "check", account);
 console.log("Transaction.counter = " + Transaction.counter);
 console.log(bank1.datePurchase);
 console.log(tran1.autoreconFKey);
 console.log(bank2.transID);
 console.log(tran2.autoreconFKey);
 
-var tran3 = new Manualtran("Oct 22, 2015", "new mouse", "35.00", "check", ouraccount);
-var tran4 = new Manualtran("Oct 23, 2015", "7-11", "6.55", "check", ouraccount);
-var bank3 = new Banktran("Oct 22, 2015", "microwave", "154.33", "check", ouraccount);
-var bank4 = new Banktran("Oct 24, 2015", "Rocky Horror Tickets", "10.00", "check", ouraccount);
-var bank5 = new Banktran("Oct 1, 2015", "cigarettes", "6.55", "check", ouraccount);
+var tran3 = new Manualtran("Oct 22, 2015", "new mouse", "35.00", "check", account);
+var tran4 = new Manualtran("Oct 23, 2015", "7-11", "6.55", "check", account);
+var bank3 = new Banktran("Oct 22, 2015", "microwave", "154.33", "check", account);
+var bank4 = new Banktran("Oct 24, 2015", "Rocky Horror Tickets", "10.00", "check", account);
+var bank5 = new Banktran("Oct 1, 2015", "cigarettes", "6.55", "check", account);
 
 //var user = { name: "name", age: 25 }
 //console.log("Serialize all the things");

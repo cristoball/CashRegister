@@ -12,7 +12,7 @@ function enterNewMan() {
 	
 	var datePbox = document.createElement("input");
 	datePbox.setAttribute("id", "datePbox");
-	datePbox.setAttribute("type", "text");
+	datePbox.setAttribute("type", "date");
 	var payeebox = document.createElement("input");
 	payeebox.setAttribute("id", "payeebox");
 	payeebox.setAttribute("type", "text");
@@ -22,6 +22,7 @@ function enterNewMan() {
 	var typebox = document.createElement("input");
 	typebox.setAttribute("id", "typebox");
 	typebox.setAttribute("type", "text");
+	typebox.setAttribute("value", "check");
 	
 	datePlbl.insertCell(0).innerHTML = "Purchase Date:";
 	payeelbl.insertCell(0).innerHTML = "Payee:";
@@ -47,6 +48,6 @@ function enterNewMan() {
 		var typebox = document.getElementById("typebox");
 		
 		
-		var newguy = new Manualtran(datePbox.value, payeebox.value, amtbox.value, typebox.value);
+		var newguy = new Manualtran(datePbox.value, payeebox.value, amtbox.value, typebox.value, account);
 		alert("New Transaction submitted");
 	}

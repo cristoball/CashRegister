@@ -1,6 +1,6 @@
 function accountUpdate(mtran) {
 	
-	if(mtran.transType == "deposit") {
+	if (mtran.transType == "deposit") {
 		//
 	} else {
 		

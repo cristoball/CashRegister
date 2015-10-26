@@ -1,20 +1,20 @@
 var cookieName = "all";
 deleteCookie(cookieName);
-var mantransJson = JSON.stringify(mantrans);
-var cookie = setCookie("mantrans", mantransJson);
-console.log(cookie);
+//var mantransJson = JSON.stringify(mantrans);
+//var cookie = setCookie("mantrans", mantransJson);
+//console.log(cookie);
 
-var banktransJson = JSON.stringify(banktrans);
-cookie = setCookie("banktrans", banktransJson);
-console.log(cookie);
+//var banktransJson = JSON.stringify(banktrans);
+//cookie = setCookie("banktrans", banktransJson);
+//console.log(cookie);
 
-var accountJson = JSON.stringify(account);
-cookie = setCookie("account", accountJson);
-console.log(cookie);
+//var accountJson = JSON.stringify(account);
+//cookie = setCookie("account", accountJson);
+//console.log(cookie);
 
 
 function setCookie(cname, cvalue) {
-    document.cookie = cname + "=" + cvalue;
+    document.cookie = cname + "=" + JSON.stringify(cvalue);
 	return document.cookie;
 }
 
