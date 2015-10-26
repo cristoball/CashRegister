@@ -3,9 +3,9 @@ function accountUpdate(mtran) {
 	if(mtran.transType == "deposit") {
 		//
 	} else {
-		var avail = Number(account.availableBalance);
+		
 		var purch = Number(mtran.purchaseAmt);
-		avail += purch;
+		account.availableBalance += purch;
 	}
 	
 	var acctbalbox = document.getElementById("acctbalbox");
